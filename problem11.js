@@ -58,6 +58,26 @@ function minSubArrayLen (intArray, number) {
 
 //optimized approach
 
+function minSubArrayLen(intArray, number) {
+    let start = 0;
+    let end = 0;
+
+    let minArrayLength = Number.POSITIVE_INFINITY;
+    let sum = intArray[end];
+    while (end < intArray.length && start < intArray.length) {
+        if (sum < number) {
+            end++;
+            sum = sum + intArray[end];           
+        } else {
+            minArrayLength = Math.min(minArrayLength, (end - start + 1));
+            sum = sum - intArray[start];
+            start ++;
+        }
+    }
+
+    return minArrayLength === Number.POSITIVE_INFINITY ? 0 : minArrayLength;
+}
+
 console.log(minSubArrayLen([2,3,1,2,4,3], 7)) // 2 -> because [4,3] is the smallest subarray
 console.log(minSubArrayLen([2,1,6,5,4], 9)) // 2 -> because [5,4] is the smallest subarray
 console.log(minSubArrayLen([3,1,7,11,2,9,8,21,62,33,19], 52)) // 1 -> because [62] is greater than 52
