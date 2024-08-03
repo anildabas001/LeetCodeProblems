@@ -38,6 +38,12 @@ function findLongestSubstring (string) {
     return longestStringLength === Number.NEGATIVE_INFINITY ? 0 : longestStringLength;    
 }
 
+//Optimal solution
+
+function findLongestSubstring (string) {
+    
+}
+
 
 
 console.log(findLongestSubstring('')) // 0
