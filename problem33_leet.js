@@ -66,3 +66,36 @@ var romanToInt = function(s) {
 
     return result;
 };
+
+
+var romanToInt = function(s) {
+    let symbols = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
+    }
+
+    let oddCases = {
+        "IX": -1,
+        "IV": -1,
+        "XL": -10,
+        "XC": -10,
+        "CD": -100,
+        "CM": -100
+    }
+
+    let result = 0;
+    for (let i = 0; i < s.length; i++) {
+        if (oddCases[(s[i] + s[i+1])]) {
+            result = result + oddCases[(s[i] + s[i+1])];
+        } else {
+            result = result + symbols[s[i]];
+        }
+    }
+
+    return result;
+};
