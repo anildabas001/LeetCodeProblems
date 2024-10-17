@@ -31,17 +31,17 @@ var hasCycle = function(head) {
         return false;
     }
 
-    let index = 0;
-    let fastPointer = head.next;
+    let fastPointer = head;
     let slowPointer = head;
 
-    while (fastPointer && slowPointer) {   
+    while (fastPointer && fastPointer.next) {   
+        fastPointer = fastPointer.next?.next;
+        slowPointer = slowPointer.next;
         if (fastPointer === slowPointer) {
             return true;
         }
 
-        fastPointer = fastPointer.next?.next;
-        slowPointer = slowPointer.next;
+       
     }
 
     return false;
